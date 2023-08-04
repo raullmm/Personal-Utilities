@@ -1,27 +1,12 @@
 trigger:
-- none
+  - main  # Cambiar "main" por la rama que deseas que active la pipeline
 
-pr:
-- none
+pool:
+  vmImage: 'windows-2019'
 
-resources:
-- repo: self
-
-variables:
-- group: BuildMavimContainerTest
-
-
-stages:
-- stage: Build
-  displayName: Build Conatiner Image
-  jobs:
-  - job: build_container_image
-    pool:
-      vmImage: $(vmImageName)
-    steps:
-    - task: PowerShell@2
-      displayName: Get version number.
-      inputs:
-        targetType: 'inline'
-        script: |
-          Write-Host "Test Pipeline"
+steps:
+- task: PowerShell@2
+  displayName: 'Ejecutar script de PowerShell'
+  inputs:
+    targetType: 'inline'
+    script: 'Write-Host "Hola Mundo"'
