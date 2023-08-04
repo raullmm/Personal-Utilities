@@ -5,10 +5,10 @@ pool:
   vmImage: 'windows-2019'
 
 stages:
-- stage: My first stage
+- stage: My_first_stage
   displayName: Move Files Test
   jobs:
-  - job: My first job
+  - job: My_first_job
     steps:
     - task: PowerShell@2
       displayName: My first task.
