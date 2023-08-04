@@ -1,0 +1,27 @@
+trigger:
+- none
+
+pr:
+- none
+
+resources:
+- repo: self
+
+variables:
+- group: BuildMavimContainerTest
+
+
+stages:
+- stage: Build
+  displayName: Build Conatiner Image
+  jobs:
+  - job: build_container_image
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: PowerShell@2
+      displayName: Get version number.
+      inputs:
+        targetType: 'inline'
+        script: |
+          Write-Host "Test Pipeline"
