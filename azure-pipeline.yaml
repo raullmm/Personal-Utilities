@@ -1,6 +1,9 @@
 trigger:
   - main  # Cambiar "main" por la rama que deseas que active la pipeline
 
+variables:
+  azureServiceConnection: 'Visual Studio Enterprise Subscription – MPN'
+
 pool:
   vmImage: 'windows-2019'
 
@@ -16,4 +19,4 @@ stages:
         targetType: 'inline'
         script: |
           Write-Host "Test Pipeline"
-          az group create --name "MiGrupoDeRecursos" --location "East US"
+          az group create --name "MiGrupoDeRecursos" --location "East US" --subscription $(azureServiceConnection)
