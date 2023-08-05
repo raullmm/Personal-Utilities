@@ -16,6 +16,7 @@ stages:
     - task: PowerShell@2
       displayName: My first task.
       inputs:
+        azureSubscription: $(azureServiceConnection)
         targetType: 'inline'
         script: |
           Write-Host "Test Pipeline"
