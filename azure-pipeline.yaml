@@ -20,4 +20,4 @@ stages:
         targetType: 'inline'
         script: |
           Write-Host "Test Pipeline"
-          az group create --name "MiGrupoDeRecursos" --location "East US" --subscription $(azureServiceConnection)
+          az group create --name "MiGrupoDeRecursos" --location "East US" --connection-string $(azureServiceConnection)
