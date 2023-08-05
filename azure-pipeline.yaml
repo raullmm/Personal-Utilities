@@ -16,4 +16,4 @@ stages:
         targetType: 'inline'
         script: |
           Write-Host "Test Pipeline"
-          New-AzResourceGroup -Name "MiGrupoDeRecursos" -Location "East US"
+          az group create --name "MiGrupoDeRecursos" --location "East US"
