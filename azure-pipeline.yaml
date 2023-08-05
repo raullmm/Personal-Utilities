@@ -21,4 +21,4 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           # Comando para crear el grupo de recursos
-          az group create --name "MiGrupoDeRecursos" --location "East US
+          az group create --name "MiGrupoDeRecursos" --location "East US"
