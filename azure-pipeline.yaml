@@ -1,11 +1,11 @@
 trigger:
-  - main  # Cambiar "main" por la rama que deseas que active la pipeline
-
-variables:
-  azureServiceConnection: 'Visual Studio Enterprise Subscription – MPN'
+  - main
 
 pool:
   vmImage: 'windows-2019'
+
+variables:
+  azureServiceConnection: 'Visual Studio Enterprise Subscription – MPN'
 
 stages:
 - stage: My_first_stage
@@ -13,11 +13,12 @@ stages:
   jobs:
   - job: My_first_job
     steps:
-    - task: PowerShell@2
-      displayName: My first task.
+    - task: AzureCLI@2
+      displayName: 'Azure CLI - Login'
       inputs:
         azureSubscription: $(azureServiceConnection)
-        targetType: 'inline'
-        script: |
-          Write-Host "Test Pipeline"
-          az group create --name "MiGrupoDeRecursos" --location "East US" --connection-string $(azureServiceConnection)
+        scriptType: 'ps'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          # Comando para crear el grupo de recursos
+          az group create --name "MiGrupoDeRecursos" --location "East US
