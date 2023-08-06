@@ -21,4 +21,5 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           # Comando para crear el grupo de recursos
-          az storage blob upload --container-name "raultestportal" --file "$(Build.SourcesDirectory)/archivo_test.txt" --name "archivo_dentro.txt" --connection-string "$(webconfigStorageAccount)" --overwrite
+          write-host $(webconfigStorageAccount)
+          az storage blob upload --account-name "versionstorageaks" --account-key "$(webconfigStorageAccount)" --container-name "raultestportal" --type block --name "archivo_destino.txt" --type "$(Build.SourcesDirectory)/archivo_test.txt"
