@@ -21,4 +21,4 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           # Comando para crear el grupo de recursos
-          az storage blob upload --account-name "versionstorageaks" --account-key "vIF4oI4vCk3qkPhFDkRph9YQ+f+Ja9pCRFmVdQwJ1a1+uh6lOPFrGj3LW3VBRGIwEb7TiDKVmzVh+AStsbB6jQ==" --file "$(Build.SourcesDirectory)/archivo_test.txt" --name archivo_test1.txt
+          az storage blob upload --account-name "versionstorageaks" --account-key "vIF4oI4vCk3qkPhFDkRph9YQ+f+Ja9pCRFmVdQwJ1a1+uh6lOPFrGj3LW3VBRGIwEb7TiDKVmzVh+AStsbB6jQ==" --type block --file "$(Build.SourcesDirectory)/archivo_test.txt" --name archivo_test1.txt
