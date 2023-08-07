@@ -31,20 +31,20 @@ stages:
           Write-Host "The files list are:"
           ls ".\WebExpanded\"
           Write-Host "Raname the web.config name with the new version"       
-          Rename-Item -Path ".\WebExpanded\web.config" -NewName "web.config_$version"
+          # Rename-Item -Path ".\WebExpanded\web.config" -NewName "web.config_$version"
 
           # Upload the file web.config
           Write-Host "Upload the file to the correct blob storage:"
-          az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file "./WebExpanded/web.config_$version" --container-name webconfig --name web.config_$version --overwrite
+          az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file ".\WebExpanded\web.config" --container-name webconfig --name web.config_$version --overwrite
 
           # Rename the file Web.zip to Portalaks.zip and version to versionaks
           Write-Host "Rename the file Web.zip to Portalaks.zip and version to versionaks"
-          Rename-Item -Path "$(Build.SourcesDirectory)\Web.config" -NewName "Portalaks.zip"
-          Rename-Item -Path "$(Build.SourcesDirectory)\version" -NewName "versionaks"
+          # Rename-Item -Path "$(Build.SourcesDirectory)\Web.zip" -NewName "Portalaks.zip"
+          # Rename-Item -Path "$(Build.SourcesDirectory)\version" -NewName "versionaks"
 
           # Upload to the specific container
           Write-Host "Upload the files Portalaks.zip and versionaks to the correct blob container"
-          az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file "./Portalaks.zip" --container-name productionportal --name web.config_$version --overwrite
-          az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file "./versionaks" --container-name productionportal --name web.config_$version --overwrite
+          az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file "$(Build.SourcesDirectory)\Web.zip" --container-name productionportal --name Portalaks.zip --overwrite
+          az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file "$(Build.SourcesDirectory)\version" --container-name productionportal --name versionaks --overwrite
 
           
