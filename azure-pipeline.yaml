@@ -27,5 +27,5 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           Write-Host "Script initializing"
-          .\$(Build.SourcesDirectory)\replace_version.ps1
+          .\$(Build.SourcesDirectory)\resourcegroup.ps1
           
