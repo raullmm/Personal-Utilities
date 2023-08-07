@@ -6,6 +6,7 @@ pool:
 
 variables:
   azureServiceConnection: 'Visual Studio Enterprise Subscription – MPN'
+- group: Test-Proyect-ScalingDta
 
 stages:
 - stage: My_first_stage
@@ -20,5 +21,16 @@ stages:
         scriptType: 'ps'
         scriptLocation: 'inlineScript'
         inlineScript: |
+          #Expand the zip
+          Expand-Archive -Path "$(Build.SourcesDirectory)/Web.zip" -DestinationPath "./WebExpanded" -Force
+
+          #Get the version
+          $version = Get-Content -Path $(Build.SourcesDirectory)/version                         
+          Write-Host "The version is going to deploy is $version"
+
+          #Rename the file with the specific name
+          ls ".\WebExpanded\web.config"       
+          Rename-Item -Path ".\WebExpanded\web.config" -NewName "web.config_$version"
+
           # Comando para crear el grupo de recursos
-          az storage blob upload --connection-string "DefaultEndpointsProtocol=https;AccountName=versionstorageaks;AccountKey=vIF4oI4vCk3qkPhFDkRph9YQ+f+Ja9pCRFmVdQwJ1a1+uh6lOPFrGj3LW3VBRGIwEb7TiDKVmzVh+AStsbB6jQ==;EndpointSuffix=core.windows.net" --type block --file "$(Build.SourcesDirectory)/archivo_test.txt" --container-name raultestportal --name archivo_test1.txt --overwrite
+          az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file "./WebExpanded/web.config_$version" --container-name webconfig --name web.config_$version --overwrite
