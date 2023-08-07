@@ -26,7 +26,5 @@ stages:
         scriptType: 'ps'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          Copy-Item "$(Build.SourcesDirectory)\resourcegroup.ps1" "."
           Write-Host "Script initializing"
-          .\resourcegroup.ps1
-          
+          $(Build.SourcesDirectory)\resourcegroup.ps1
