@@ -20,8 +20,8 @@ if (Test-Path -Path "$env:Build_SourcesDirectory/Web.zip") {
 
     # Upload to the specific container
     Write-Host "Upload the files Portalaks.zip and versionaks to the correct blob container"
-    az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file "$env:portalStorageAccount\Web.zip" --container-name productionportal --name Portalaks.zip --overwrite
-    az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file "$env:portalStorageAccount\version" --container-name productionportal --name versionaks --overwrite
+    az storage blob upload --connection-string "$env:webconfigStorageAccount" --type block --file "$env:portalStorageAccount\Web.zip" --container-name productionportal --name Portalaks.zip --overwrite
+    az storage blob upload --connection-string "$env:webconfigStorageAccount" --type block --file "$env:portalStorageAccount\version" --container-name productionportal --name versionaks --overwrite
 } else {
     Write-Host "Web.zip not found. Skipping the script."
 }
