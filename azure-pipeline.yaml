@@ -1,5 +1,11 @@
 trigger:
-  - main
+  - none
+
+pr:
+  - none
+
+resources:
+- repo: self
 
 pool:
   vmImage: 'windows-2019'
@@ -30,8 +36,7 @@ stages:
           # Rename the file with the specific name
           Write-Host "The files list are:"
           ls ".\WebExpanded\"
-          Write-Host "Raname the web.config name with the new version"       
-          # Rename-Item -Path ".\WebExpanded\web.config" -NewName "web.config_$version"
+          Write-Host "Rename the web.config name with the new version"       
 
           # Upload the file web.config
           Write-Host "Upload the file to the correct blob storage:"
@@ -39,8 +44,6 @@ stages:
 
           # Rename the file Web.zip to Portalaks.zip and version to versionaks
           Write-Host "Rename the file Web.zip to Portalaks.zip and version to versionaks"
-          # Rename-Item -Path "$(Build.SourcesDirectory)\Web.zip" -NewName "Portalaks.zip"
-          # Rename-Item -Path "$(Build.SourcesDirectory)\version" -NewName "versionaks"
 
           # Upload to the specific container
           Write-Host "Upload the files Portalaks.zip and versionaks to the correct blob container"
