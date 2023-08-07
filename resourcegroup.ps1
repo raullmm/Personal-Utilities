@@ -13,7 +13,7 @@ if (Test-Path -Path "$env:Build_SourcesDirectory/Web.zip") {
 
     # Upload the file web.config
     Write-Host "Upload the file to the correct blob storage:"
-    az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file ".\WebExpanded\web.config" --container-name webconfig --name web.config_$version --overwrite
+    az storage blob upload --connection-string "$env:webconfigStorageAccount" --type block --file ".\WebExpanded\web.config" --container-name webconfig --name web.config_$version --overwrite
 
     # Rename the file Web.zip to Portalaks.zip and version to versionaks
     Write-Host "Rename the file Web.zip to Portalaks.zip and version to versionaks"
