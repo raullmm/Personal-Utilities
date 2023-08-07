@@ -26,7 +26,7 @@ stages:
         scriptType: 'ps'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          # Expand the zip
+          # Expand the Web.zip
           Expand-Archive -Path "$(Build.SourcesDirectory)/Web.zip" -DestinationPath "./WebExpanded" -Force
 
           # Get the version
