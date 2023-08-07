@@ -5,8 +5,10 @@ pool:
   vmImage: 'windows-2019'
 
 variables:
-  - group: Test-Proyect-ScalingDta
-    azureServiceConnection: 'Visual Studio Enterprise Subscription – MPN'
+- group: Test-Proyect-ScalingDta
+
+variables:
+  azureServiceConnection: 'Visual Studio Enterprise Subscription – MPN'
 
 
 stages:
