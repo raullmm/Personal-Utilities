@@ -7,10 +7,6 @@ pool:
 variables:
 - group: Test-Proyect-ScalingDta
 
-variables:
-  azureServiceConnection: 'Visual Studio Enterprise Subscription – MPN'
-
-
 stages:
 - stage: My_first_stage
   displayName: Move Files Test
