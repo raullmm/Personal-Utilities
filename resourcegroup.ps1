@@ -13,15 +13,15 @@ if (Test-Path -Path "$env:Build_SourcesDirectory/Web.zip") {
 
     # Upload the file web.config
     Write-Host "Upload the file to the correct blob storage:"
-    az storage blob upload --connection-string "$env:Build_SourcesDirectory" --type block --file ".\WebExpanded\web.config" --container-name webconfig --name web.config_$version --overwrite
+    az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file ".\WebExpanded\web.config" --container-name webconfig --name web.config_$version --overwrite
 
     # Rename the file Web.zip to Portalaks.zip and version to versionaks
     Write-Host "Rename the file Web.zip to Portalaks.zip and version to versionaks"
 
     # Upload to the specific container
     Write-Host "Upload the files Portalaks.zip and versionaks to the correct blob container"
-    az storage blob upload --connection-string "$env:Build_SourcesDirectory" --type block --file "$(Build.SourcesDirectory)\Web.zip" --container-name productionportal --name Portalaks.zip --overwrite
-    az storage blob upload --connection-string "$env:Build_SourcesDirectory" --type block --file "$(Build.SourcesDirectory)\version" --container-name productionportal --name versionaks --overwrite
+    az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file "$env:portalStorageAccount\Web.zip" --container-name productionportal --name Portalaks.zip --overwrite
+    az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file "$env:portalStorageAccount\version" --container-name productionportal --name versionaks --overwrite
 } else {
     Write-Host "Web.zip not found. Skipping the script."
 }
