@@ -39,11 +39,11 @@ stages:
 
           # Rename the file Web.zip to Portalaks.zip and version to versionaks
           Write-Host "Rename the file Web.zip to Portalaks.zip and version to versionaks"
-          Rename-Item -Path "$(Build.SourcesDirectory)\web.config" -NewName "Portalaks.zip"
+          Rename-Item -Path "$(Build.SourcesDirectory)\Web.config" -NewName "Portalaks.zip"
           Rename-Item -Path "$(Build.SourcesDirectory)\version" -NewName "versionaks"
 
           # Upload to the specific container
-          Write-Host "Upload the files to the correct blob container"
+          Write-Host "Upload the files Portalaks.zip and versionaks to the correct blob container"
           az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file "./Portalaks.zip" --container-name productionportal --name web.config_$version --overwrite
           az storage blob upload --connection-string "$(webconfigStorageAccount)" --type block --file "./versionaks" --container-name productionportal --name web.config_$version --overwrite
 
