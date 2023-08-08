@@ -45,9 +45,8 @@ stages:
           Write-Output $jsonBody
           Write-Host "The Post body will be $jsonBody"
           Write-host "Function Code is this = " $(functionCode)
-
-
-
+          
+          
 
           # Doing a POST called
           # $response = Invoke-RestMethod -Uri "https://function-mavimtest.azurewebsites.net/api/GetWebConfig?code=$(functionCode)" -Method POST -Body $jsonBody -ContentType 'application/json'
