@@ -40,13 +40,12 @@ stages:
         scriptType: 'ps'
         scriptLocation: 'inlineScript'
         inlineScript: |
+          Write-Host "https://function-mavimtest.azurewebsites.net/api/GetWebConfig?code=$(functionCode)"
           Write-Host "Script initializing"
           . "$(Build.SourcesDirectory)\config_json.ps1"
           Write-Output $jsonBody
           Write-Host "The Post body will be $jsonBody"
           Write-host "Function Code is this = " $(functionCode)
-          
-          Write-Host "https://function-mavimtest.azurewebsites.net/api/GetWebConfig?code=$(functionCode)"
 
           # Doing a POST called
           # $response = Invoke-RestMethod -Uri "https://function-mavimtest.azurewebsites.net/api/GetWebConfig?code=$(functionCode)" -Method POST -Body $jsonBody -ContentType 'application/json'
