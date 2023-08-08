@@ -1,4 +1,4 @@
-$version = Get-Content -Path "$env:Build_SourcesDirectory/version"  
+$version = Get-Content -Path "$env:Build_SourcesDirectory/version" 
           
 $jsonBody = @{
   UpdateContainerInstanceviaPipeline = "True"

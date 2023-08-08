@@ -41,7 +41,7 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           Write-Host "Script initializing"
-          $(Build.SourcesDirectory)\config_json.ps1
+          . "$(Build.SourcesDirectory)\config_json.ps1"
           Write-Output $jsonBody
           Write-Host "The Post body will be $jsonBody"
           Write-host "Function Code is this = " $(functionCode)
