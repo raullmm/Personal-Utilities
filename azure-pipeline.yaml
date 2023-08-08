@@ -12,7 +12,7 @@ pool:
 
 variables:
 - group: Test-Proyect-ScalingDta
-- functionCode: FLaDq4EwIbEagd2uF8EVvB34TUQ4VuUxWgtv9UT-0JLHAzFu0tEQwA==
+- functionCode: 'FLaDq4EwIbEagd2uF8EVvB34TUQ4VuUxWgtv9UT-0JLHAzFu0tEQwA=='
 
 stages:
 - stage: My_first_stage
