@@ -14,20 +14,20 @@ variables:
 - group: Test-Proyect-ScalingDta
 
 stages:
-- stage: My_first_stage
-  displayName: Move Files Test
-  jobs:
-  - job: My_first_job
-    steps:
-    - task: AzureCLI@2
-      displayName: 'Azure CLI - Login'
-      inputs:
-        azureSubscription: $(azureServiceConnection)
-        scriptType: 'ps'
-        scriptLocation: 'inlineScript'
-        inlineScript: |
-          Write-Host "Script initializing"
-          $(Build.SourcesDirectory)\resourcegroup.ps1
+#- stage: My_first_stage
+#  displayName: Move Files Test
+#  jobs:
+#  - job: My_first_job
+#    steps:
+#    - task: AzureCLI@2
+#      displayName: 'Azure CLI - Login'
+#      inputs:
+#        azureSubscription: $(azureServiceConnection)
+#        scriptType: 'ps'
+#        scriptLocation: 'inlineScript'
+#        inlineScript: |
+#          Write-Host "Script initializing"
+#          $(Build.SourcesDirectory)\resourcegroup.ps1
 - stage: POST_and_ConfigmapUpdater
   displayName: Create the post to the MavimtestURL
   jobs:
@@ -40,7 +40,7 @@ stages:
         scriptType: 'ps'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          $version = Get-Content -Path "$(Build_SourcesDirectory)/version"  
+          $version = Get-Content -Path "$(Build.SourcesDirectory)/version"  
           $jsonBody = Get-Content -Path "$(Build.SourcesDirectory)/template_post.json"
 
           Write-Host "The Post body will be $jsonBody"
