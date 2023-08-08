@@ -40,7 +40,7 @@ stages:
         scriptType: 'ps'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          $version = Get-Content -Path $(Build_SourcesDirectory)/version  
+          $version = Get-Content -Path "$(Build_SourcesDirectory)/version"  
           $jsonBody = Get-Content -Path "$(Build.SourcesDirectory)/template_post.json"
 
           Write-Host "The Post body will be $jsonBody"
