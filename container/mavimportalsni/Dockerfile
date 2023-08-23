@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine
 
 COPY Portal.zip .
 
