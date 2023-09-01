@@ -1,7 +1,8 @@
 param (
     [string]$token,
     [string]$imageTag,
-    [string]$imageRepository
+    [string]$imageRepository,
+    [string]$url_configmapupdater
 )
 
 # Your existing script code here
@@ -41,6 +42,6 @@ $headers = @{
     "Content-Type" = "application/json"
 }
 
-$response = Invoke-RestMethod -Uri "$(URL_CONFIGMAPUPDATER)" -Method Post -Headers $headers -Body $jsonBody
+$response = Invoke-RestMethod -Uri "$url_configmapupdater" -Method Post -Headers $headers -Body $jsonBody
 
 $response
