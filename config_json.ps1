@@ -1,15 +1,46 @@
-$version = Get-Content -Path "$env:Build_SourcesDirectory/version" 
+param (
+    [string]$token,
+    [string]$imageTag,
+    [string]$imageRepository
+)
 
-if (![string]::IsNullOrWhiteSpace($version)) {
-    $jsonBody = @{
-    UpdateContainerInstanceviaPipeline = "True"
-    PortalID = "877"
-    WebAppName = "Mavim-nl-scalingdta"
-    Webconfigversion = "$version"
-    ForceFunction = "True"
-    RedeployApp = "True"
-    } | ConvertTo-Json
-} else {
-    Write-Host "The version variable is empty. The script will not run."
-    Exit 1
+# Your existing script code here
+$jsonBody = @"
+{
+    "resources": {
+        "repositories": {
+            "self": {
+                "refName": "testing-scalingdta"
+            }
+        }
+    },
+    "variables": {
+        "VERSIONNUMBER": {
+            "isSecret": false,
+            "value": "$imageTag"
+        },
+        "customer": {
+            "isSecret": false,
+            "value": "scalingdta"
+        },
+        "SCALESET": {
+            "isSecret": false,
+            "value": "3"
+        },
+        "IMAGENAME": {
+            "isSecret": false,
+            "value": "$imageRepository"
+        }
+    }
 }
+"@
+
+# Rest of your script remains the same
+$headers = @{
+    Authorization = "Basic " + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":$token"))
+    "Content-Type" = "application/json"
+}
+
+$response = Invoke-RestMethod -Uri "$(URL_CONFIGMAPUPDATER)" -Method Post -Headers $headers -Body $jsonBody
+
+$response
