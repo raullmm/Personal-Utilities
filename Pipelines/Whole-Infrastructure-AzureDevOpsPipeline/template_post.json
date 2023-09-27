@@ -1,0 +1,24 @@
+{
+    "resources": {
+        "repositories": {
+            "self": {
+                "refName": "testing-scalingdta"
+            }
+        }
+    },
+    "variables": {
+        "VERSIONNUMBER": {
+            "isSecret": false,
+            "value": "helloraul"
+        },
+            "customer": {
+            "isSecret": false,
+            "value": "helloraul"
+        },
+            "deployregion": {
+            "isSecret": false,
+            "value": "helloraul"
+        }
+
+    }
+}

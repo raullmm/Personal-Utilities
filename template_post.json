@@ -1,8 +1,0 @@
-{
-    "UpdateContainerInstanceviaPipeline": "True",
-    "PortalID": "877",
-    "WebAppName": "Mavim-nl-scalingdta",
-    "Webconfigversion": "$($env:version)",
-    "ForceFunction": "True",
-    "RedeployApp": "True"
-}
