@@ -1,5 +1,8 @@
 To set up a nginx that has been deployed by Helm. We need to make sure that is following this page:
 
+
+Ingress Class Issues -->
+
 To avoid this problem:
 
 https://github.com/kubernetes/ingress-nginx/issues/10246
